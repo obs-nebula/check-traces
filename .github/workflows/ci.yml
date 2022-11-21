@@ -1,1 +1,23 @@
-foo bar
+name: ci
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: ./scripts/start.sh
+    - run: npm start
+    - run: ./scripts/test-app.sh
+    - run: ./scripts/check-traces.sh
+    - run: ./scripts/stop.sh
