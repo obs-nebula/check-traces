@@ -4,4 +4,4 @@ then
 fi
 
 tar xf jaeger-1.39.0-linux-amd64.tar.gz
-./jaeger-1.39.0-linux-amd64/jaeger-all-in-one
+./jaeger-1.39.0-linux-amd64/jaeger-all-in-one &
