@@ -13,7 +13,8 @@ jobs:
       with:
         node-version: 18
     - run: ./scripts/start.sh
-    - run: npm start
+    - run: npm install
+    - run: npm start &
     - run: ./scripts/test-app.sh
     - run: ./scripts/check-traces.sh
     - run: ./scripts/stop.sh
