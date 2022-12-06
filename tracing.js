@@ -21,9 +21,7 @@ const resource = new Resource({
   [SemanticResourceAttributes.SERVICE_NAME]: 'check-traces'
 });
 
-const exporter = new JaegerExporter({
-  endpoint: 'http://localhost:14268/api/traces'
-});
+const exporter = new JaegerExporter();
 
 const provider = new NodeTracerProvider({ resource: resource });
 
