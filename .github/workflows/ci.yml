@@ -15,6 +15,6 @@ jobs:
     - run: ./scripts/start.sh
     - run: npm install
     - run: npm start &
-    - run: ./scripts/test-app.sh
+    - run: ./scripts/create-trace.sh
     - run: ./scripts/check-traces.sh
     - run: ./scripts/stop.sh

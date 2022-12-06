@@ -1,25 +1,33 @@
+
+// Resources and semantic conventions.
+// https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources#opentelemetry-resources-util
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
-const { SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
-const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
-const { trace } = require('@opentelemetry/api');
+
+// Node auto instrumentation package.
+const { NodeTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-node');
+
+// Instrumentation
+const { registerInstrumentations } = require('@opentelemetry/instrumentation');
+
+// Exporter
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
+
+// Auto instrumentation packages
 const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
-const { registerInstrumentations } = require('@opentelemetry/instrumentation');
+
+const resource = new Resource({
+  [SemanticResourceAttributes.SERVICE_NAME]: 'check-traces'
+});
 
 const exporter = new JaegerExporter({
   endpoint: 'http://localhost:14268/api/traces'
 });
 
-const provider = new NodeTracerProvider({
-  resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'check-traces'
-  })
-});
+const provider = new NodeTracerProvider({ resource: resource });
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
-
 provider.register();
 
 registerInstrumentations({
@@ -29,5 +37,3 @@ registerInstrumentations({
   ],
   tracerProvider: provider
 });
-
-trace.getTracer('check-traces');
