@@ -18,7 +18,7 @@ const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-expre
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 
 const resource = new Resource({
-  [SemanticResourceAttributes.SERVICE_NAME]: 'check-traces'
+  [SemanticResourceAttributes.SERVICE_NAME]: process.env.npm_package_name
 });
 
 const exporter = new JaegerExporter();
