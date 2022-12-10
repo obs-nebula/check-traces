@@ -5,7 +5,7 @@ const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
 // Node auto instrumentation package.
-const { NodeTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-node');
+const { NodeTracerProvider, SimpleSpanProcessor, AlwaysOnSampler } = require('@opentelemetry/sdk-trace-node');
 
 // Instrumentation
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
@@ -23,7 +23,10 @@ const resource = new Resource({
 
 const exporter = new JaegerExporter();
 
-const provider = new NodeTracerProvider({ resource: resource });
+const provider = new NodeTracerProvider({ 
+  resource: resource,
+  sampler: new AlwaysOnSampler()
+});
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
 provider.register();
