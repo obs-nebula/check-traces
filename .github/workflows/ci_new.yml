@@ -1,0 +1,22 @@
+name: ci_new
+on:
+  push:
+    branches: ["*"]
+  pull_request:   
+    branches: ["*"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://localhost:14268/api/traces
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 18
+    - run: ./scripts/start_new.sh
+    - run: npm install
+    - run: npm start &
+    - run: ./scripts/create-trace.sh
+    - run: ./scripts/check-traces.sh
+    - run: ./scripts/stop.sh
