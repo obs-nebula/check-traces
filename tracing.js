@@ -1,19 +1,8 @@
-
-// Resources and semantic conventions.
-// https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources#opentelemetry-resources-util
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
-
-// Node auto instrumentation package.
 const { NodeTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-node');
-
-// Instrumentation
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
-
-// Exporter
 const { JaegerExporter } = require('@opentelemetry/exporter-jaeger');
-
-// Auto instrumentation packages
 const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 
