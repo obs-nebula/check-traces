@@ -67,8 +67,7 @@ OTEL_EXPORTER_JAEGER_ENDPOINT='http://jaeger-all-in-one-inmemory-collector.fooba
 
 Create new app:
 ```console
-oc new-app registry.access.redhat.com/ubi8/nodejs-18~https://github.com/obs-nebula/check-traces -e OTEL_EXPORTER_JA
-EGER_ENDPOINT='http://jaeger-all-in-one-inmemory-collector.foobar.svc:14268/api/traces'
+oc new-app registry.access.redhat.com/ubi8/nodejs-18~https://github.com/obs-nebula/check-traces#add-otelcol -e OTEL_EXPORTER_OTLP_ENDPOINT='http://otel-collector.example.svc:4318'
 ```
 
 To follow the build/push:
