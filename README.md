@@ -1,13 +1,8 @@
 # check-traces
 
-[![ci](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml)
+## Using SDK-NODE
 
-
-The purpose of this repository is to ensure that a basic Express app's traces are correctly generated and successfully exported to the final destination which is Jaeger.
-
-With this, we can make safer modifications and experiments according to the evolution of the APIs of the OTEL-JS modules.
-
-## How to run locally
+### How to run locally
 
 ```console
 # (Optional) You can use this environment variable to point to another Jaeger traces endpoint.
@@ -19,15 +14,15 @@ OTEL_EXPORTER_JAEGER_ENDPOINT=http://localhost:14268/api/traces
 # Start the example
 npm install
 npm start
+or
+npm run start:disabled
 ```
 
 * Go to [localhost:8080](http://localhost:8080)
 * Check the result in Jaeger UI [localhost:16686](http://localhost:16686)
 
-![jaegerUI](img.png)
 
-
-## Deploy to OpenShift Local
+### Disabling/Enabling traces using OpenShift Local
 
 Make sure to install OpenShift Local and the Jaeger Operator. For this you can follow the 
 screenshots [here](https://github.com/nodeshift-starters/nodejs-configmap/blob/main/OTEL.md#install-the-openshift-distributed-tracing-platform-operator). 
@@ -67,15 +62,12 @@ OTEL_EXPORTER_JAEGER_ENDPOINT='http://jaeger-all-in-one-inmemory-collector.fooba
 
 Create new app:
 ```console
-oc new-app registry.access.redhat.com/ubi8/nodejs-18~https://github.com/obs-nebula/check-traces -e OTEL_EXPORTER_JA
-EGER_ENDPOINT='http://jaeger-all-in-one-inmemory-collector.foobar.svc:14268/api/traces'
+oc new-app registry.access.redhat.com/ubi8/nodejs-18~https://github.com/obs-nebula/check-traces#sdk-node -e OTEL_EXPORTER_JAEGER_ENDPOINT='http://jaeger-all-in-one-inmemory-collector.foobar.svc:14268/api/traces'
 ```
 
 To follow the build/push:
 ```console
 oc logs -f buildconfig/check-traces
-# or
-oc logs -f bc/check-traces
 ```
 
 Expose the app:
@@ -102,7 +94,16 @@ jaeger-all-in-one-inmemory   jaeger-all-in-one-inmemory-foobar.apps-crc.testing 
 
 [https://jaeger-all-in-one-inmemory-foobar.apps-crc.testing](https://jaeger-all-in-one-inmemory-foobar.apps-crc.testing)
 
-# Cleanup
+## Disable / Enable
+
+```console
+➜  ~ oc set env deployment/check-traces OTEL_SDK_DISABLED=true
+deployment.apps/check-traces updated
+➜  ~ oc set env deployment/check-traces OTEL_SDK_DISABLED=false
+deployment.apps/check-traces updated
+```
+
+## Cleanup
 
 ```console
 oc delete all --selector app=check-traces
