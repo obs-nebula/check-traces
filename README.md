@@ -3,6 +3,14 @@
 [![ci](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml)
 
 
+## Branches
+
+This repository contains the following branches:
+
+* [add-otelcol](https://github.com/obs-nebula/check-traces/tree/add-otelcol) - We need to make some experiments with OTELCOL inside OpenShift Local
+* [meta-package](https://github.com/obs-nebula/check-traces/tree/meta-package) - We are using the otel-js [meta-package](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node) to test other things
+* [sdk-node](https://github.com/obs-nebula/check-traces/tree/sdk-node) - Created to play with enable/disable OTEL-JS
+
 The purpose of this repository is to ensure that a basic Express app's traces are correctly generated and successfully exported to the final destination which is Jaeger.
 
 With this, we can make safer modifications and experiments according to the evolution of the APIs of the OTEL-JS modules.
