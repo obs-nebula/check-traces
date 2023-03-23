@@ -6,7 +6,7 @@
 
 | Package | Why |
 | ----------- | ----------- |
-| @opentelemetry/exporter-jaeger | (deprecated) To export to Jaeger |
+| @opentelemetry/exporter-trace-otlp-http | To export to Jaeger via OTLP/HTTP |
 | @opentelemetry/instrumentation-express | Express auto-instrumentation plugin |
 | @opentelemetry/instrumentation-http | Required to be used with `@opentelemetry/instrumentation-express` |
 | @opentelemetry/resources | To be used with `semantic-conventions` to identify the application/service's name |
