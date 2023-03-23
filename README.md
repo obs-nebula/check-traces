@@ -2,6 +2,17 @@
 
 [![ci](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/obs-nebula/check-traces/actions/workflows/ci.yml)
 
+> OTEL-JS packages in use:
+
+| Package | Why |
+| ----------- | ----------- |
+| @opentelemetry/exporter-jaeger | (deprecated) To export to Jaeger |
+| @opentelemetry/instrumentation-express | Express auto-instrumentation plugin |
+| @opentelemetry/instrumentation-http | Required to be used with `@opentelemetry/instrumentation-express` |
+| @opentelemetry/resources | To be used with `semantic-conventions` to identify the application/service's name |
+| @opentelemetry/sdk-trace-node | For automatic instrumentation |
+| @opentelemetry/semantic-conventions | To be used with `resources` to identify the application/service's name |
+| @opentelemetry/instrumentation | To register the auto-instrumentation plugins and the trace provider |
 
 ## Branches
 
