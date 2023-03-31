@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
+    "start:ci": "NODE_OPTIONS='--require ./tracing.js' node .",
     "prestart": "eslint --fix --ignore-path .gitignore ."
   },
   "license": "MIT",

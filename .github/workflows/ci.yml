@@ -16,7 +16,7 @@ jobs:
         node-version: 18
     - run: ./scripts/start.sh
     - run: npm install
-    - run: npm start &
+    - run: npm start:ci &
     - run: ./scripts/create-trace.sh
     - run: ./scripts/check-traces.sh
     - run: ./scripts/stop.sh
