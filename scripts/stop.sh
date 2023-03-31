@@ -1,1 +1,0 @@
-killall jaeger-all-in-one
