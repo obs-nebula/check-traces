@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: check-traces
+  namespace: check-traces
+  labels:
+    app: check-traces
+    component: check-traces
+spec:
+  ports:
+    - name: check-traces
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    component: check-traces
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: check-traces
+  namespace: check-traces
+  labels:
+    app: check-traces
+    component: check-traces      
+spec:
+  selector:
+    matchLabels:
+      app: check-traces
+      component: check-traces
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: check-traces
+        component: check-traces
+      annotations:
+        instrumentation.opentelemetry.io/inject-nodejs: 'nodejs-instrumentation'
+        sidecar.opentelemetry.io/inject: 'sidecar'  
+    spec:
+      containers:
+        - name: check-traces
+          ports:
+            - containerPort: 8080
+          image: check-traces
+          imagePullPolicy: Never
+          resources:
+            limits:
+              cpu: "2"
+              memory: 512Mi
