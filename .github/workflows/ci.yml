@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      OTEL_EXPORTER_JAEGER_ENDPOINT: http://localhost:14268/api/traces
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2

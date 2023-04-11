@@ -1,1 +1,1 @@
-killall jaeger-all-in-one
+killall otelcol

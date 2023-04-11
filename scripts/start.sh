@@ -1,7 +1,7 @@
-if [ ! -f "jaeger-1.43.0-linux-amd64.tar.gz" ]
+if [ ! -f "otelcol_0.75.0_linux_amd64.tar.gz" ]
 then 
-  wget https://github.com/jaegertracing/jaeger/releases/download/v1.43.0/jaeger-1.43.0-linux-amd64.tar.gz
+  wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.75.0/otelcol_0.75.0_linux_amd64.tar.gz
 fi
 
-tar xf jaeger-1.43.0-linux-amd64.tar.gz
-./jaeger-1.43.0-linux-amd64/jaeger-all-in-one --collector.otlp.enabled=true &
+tar xf otelcol_0.75.0_linux_amd64.tar.gz otelcol
+./otelcol --config=file:otel-collector-config.yaml &
