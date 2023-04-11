@@ -4,7 +4,7 @@
 
 > OTEL-JS packages in use:
 
-| Package | Why |
+| Package |  |
 | ----------- | ----------- |
 | @opentelemetry/exporter-trace-otlp-http | To export to Jaeger via OTLP/HTTP |
 | @opentelemetry/instrumentation-express | Express auto-instrumentation plugin |

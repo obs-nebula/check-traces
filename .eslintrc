@@ -1,15 +1,58 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "node",
+    "prettier"
+  ],
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    "prefer-rest-params": "off",
+    "no-console": "error",
+    "no-shadow": "off",
+    "node/no-deprecated-api": ["warn"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-this-alias": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "memberLike",
+            "modifiers": ["private", "protected"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": ["error", {"argsIgnorePattern": "^_", "args": "after-used"}],
+        "@typescript-eslint/no-inferrable-types": ["error", { "ignoreProperties": true }],
+        "@typescript-eslint/no-empty-function": ["off"],
+        "@typescript-eslint/ban-types": ["warn", {
+          "types": {
+            "Function": null
+          }
+        }],
+        "@typescript-eslint/no-shadow": ["warn"]
+      }
+    }
   ],
   "env": {
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": "latest"
-  },
-  "rules": {
-    "semi": "error",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    "commonjs": true
   }
 }
