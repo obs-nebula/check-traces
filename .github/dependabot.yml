@@ -3,14 +3,14 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     ignore:
       - dependency-name: "express"
       - dependency-name: "eslint"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     target-branch: "sdk-node"  
     ignore:
       - dependency-name: "express"
@@ -18,7 +18,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     target-branch: "otelcol-auto-instrumentation"  
     ignore:
       - dependency-name: "express"
@@ -26,7 +26,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     target-branch: "add-otelcol"  
     ignore:
       - dependency-name: "express"
@@ -34,7 +34,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     target-branch: "meta-package"  
     ignore:
       - dependency-name: "express"
