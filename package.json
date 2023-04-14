@@ -11,7 +11,7 @@
   "dependencies": {
     "@opentelemetry/api": "^1.4.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.37.0",
-    "@opentelemetry/instrumentation": "^0.37.0",
+    "@opentelemetry/instrumentation": "^0.38.0",
     "@opentelemetry/instrumentation-express": "^0.32.1",
     "@opentelemetry/instrumentation-http": "^0.38.0",
     "@opentelemetry/resources": "^1.11.0",
