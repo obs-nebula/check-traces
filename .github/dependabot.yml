@@ -7,6 +7,15 @@ updates:
     ignore:
       - dependency-name: "express"
       - dependency-name: "eslint"
+      - dependency-name: "@types/express"
+      - dependency-name: "@types/node"
+      - dependency-name: "@typescript-eslint/eslint-plugin"
+      - dependency-name: "@typescript-eslint/parser"
+      - dependency-name: "eslint-config-prettier"
+      - dependency-name: "eslint-plugin-node"
+      - dependency-name: "eslint-plugin-prettier"
+      - dependency-name: "prettier"
+      - dependency-name: "typescript"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
