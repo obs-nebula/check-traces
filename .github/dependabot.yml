@@ -27,14 +27,6 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    target-branch: "add-otelcol"  
-    ignore:
-      - dependency-name: "express"
-      - dependency-name: "eslint"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "monthly"
     target-branch: "meta-package"  
     ignore:
       - dependency-name: "express"
