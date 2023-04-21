@@ -26,6 +26,7 @@ With this, we can make safer modifications and experiments according to the evol
 
 # Start the example
 npm install
+npm run build
 npm start
 ```
 ### Test

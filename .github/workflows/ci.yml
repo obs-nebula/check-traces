@@ -14,6 +14,7 @@ jobs:
         node-version: 18
     - run: ./scripts/start.sh
     - run: npm install
+    - run: npm run build
     - run: npm run lint
     - run: npm start &
     - run: ./scripts/create-trace.sh
