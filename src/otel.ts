@@ -1,4 +1,5 @@
-import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+// Let's keep this in case needed in the future.
+// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
@@ -13,7 +14,8 @@ import {
 } from '@opentelemetry/sdk-metrics';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
 
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+// Let's keep this in case needed in the future.
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 const resource = new Resource({
   [SemanticResourceAttributes.SERVICE_NAME]: process.env.npm_package_name,
