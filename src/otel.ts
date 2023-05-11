@@ -17,16 +17,6 @@ const resource = new Resource({
 
 const metricsExporter = new OTLPMetricExporter();
 
-const meterProvider = new MeterProvider({ resource: resource });
-meterProvider.addMetricReader(
-  new PeriodicExportingMetricReader({ exporter: metricsExporter })
-);
-meterProvider.getMeter(
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  process.env.npm_package_name!,
-  process.env.npm_package_version
-);
-
 const sdk = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -42,3 +32,15 @@ try {
 } catch (err) {
   error(err);
 }
+
+const meterProvider = new MeterProvider({ resource: resource });
+
+meterProvider.addMetricReader(
+  new PeriodicExportingMetricReader({ exporter: metricsExporter })
+);
+
+meterProvider.getMeter(
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  process.env.npm_package_name!,
+  process.env.npm_package_version
+);
