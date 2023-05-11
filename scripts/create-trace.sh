@@ -1,2 +1,2 @@
-curl -v http://localhost:8080
-sleep 2
+sleep 5
+curl http://localhost:8080
