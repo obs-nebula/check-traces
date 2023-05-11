@@ -12,6 +12,7 @@ import {
   MeterProvider,
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
+
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
 
 // Let's keep this in case needed in the future.
@@ -22,11 +23,16 @@ const resource = new Resource({
 });
 
 const metricsExporter = new OTLPMetricExporter();
+const meterProvider = new MeterProvider({ resource: resource });
+meterProvider.addMetricReader(
+  new PeriodicExportingMetricReader({ exporter: metricsExporter })
+);
 
 const sdk = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
   metricReader: new PeriodicExportingMetricReader({
     exporter: metricsExporter,
+    exportIntervalMillis: 3000,
   }),
   autoDetectResources: true,
   resource: resource,
@@ -38,15 +44,3 @@ try {
 } catch (err) {
   error(err);
 }
-
-const meterProvider = new MeterProvider({ resource: resource });
-
-meterProvider.addMetricReader(
-  new PeriodicExportingMetricReader({ exporter: metricsExporter })
-);
-
-meterProvider.getMeter(
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  process.env.npm_package_name!,
-  process.env.npm_package_version
-);
