@@ -7,12 +7,12 @@
 | Package |  |
 | ----------- | ----------- |
 | @opentelemetry/exporter-trace-otlp-http | To export to OTELCOL via OTLP/HTTP |
+| @opentelemetry/exporter-metrics-otlp-http | Metrics exporter via OTLP/HTTP   |
 | @opentelemetry/instrumentation-express | Express auto-instrumentation plugin |
 | @opentelemetry/instrumentation-http | Required to be used with `@opentelemetry/instrumentation-express` |
 | @opentelemetry/resources | To be used with `semantic-conventions` to identify the application/service's name |
-| @opentelemetry/sdk-trace-node | For automatic instrumentation |
+| @opentelemetry/sdk-node | For automatic instrumentation |
 | @opentelemetry/semantic-conventions | To be used with `resources` to identify the application/service's name |
-| @opentelemetry/instrumentation | To register the auto-instrumentation plugins and the trace provider |
 
 The purpose of this repository is to ensure that a basic Express app's traces are correctly generated and successfully exported to the final destination which is the OpenTelemetry collector.
 
