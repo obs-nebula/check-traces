@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#: Description : Basic trace creation by accessing the application.
+#: Description : Basic test to verify if the OTELCOL received the generated spans.
 
 # There is a possibility to remove this `sleep` command, some tests
 # could be done to try to simplify this.
