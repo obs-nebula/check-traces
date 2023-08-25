@@ -2,18 +2,18 @@ version: '3'
 
 services:
   collector:
-    image: otel/opentelemetry-collector:0.75.0
+    image: docker.io/otel/opentelemetry-collector:0.75.0
     command: ["--config=/otel-collector-config.yaml"]
     volumes:
-      - './otel-collector-config-metrics.yaml:/otel-collector-config.yaml'
+      - './otel-collector-config-metrics.yaml:/otel-collector-config.yaml:z'
     ports:
       - "4317:4317"
       - "4318:4318"
       - "9464:9464"
   prometheus:
     container_name: prometheus
-    image: prom/prometheus:latest
+    image: docker.io/prom/prometheus:latest
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:z
     ports:
       - "9090:9090"

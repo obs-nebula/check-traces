@@ -20,7 +20,7 @@ With this, we can make safer modifications and experiments according to the evol
 
 ## How to run
 
-```shell
+```console
 # This will download and start OTELCOL
 ./scripts/start.sh
 
@@ -29,17 +29,35 @@ npm install
 npm run build
 npm start
 ```
+
 ### Test
 
-```shell
+```console
 # Create some spans
 curl -v http://localhost:8080
 # Check the results
 curl -s http://localhost:8888/metrics
 ```
+
 ### Stop the application and OTELCOL
 
-```shell
+```console
 killall node
 ./scripts/stop.sh
+```
+
+### Run with basic metrics
+
+Open a terminal and run
+
+```console
+podman-compose up
+```
+
+Open a new terminal and run
+
+```console
+npm install
+npm run build
+npm start
 ```
